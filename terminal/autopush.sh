@@ -71,7 +71,7 @@ hayCambios=$(git status | wc -l)
 # significará que no hay nada para añadir o commitear
 if [ $hayCambios -eq 3 ]
 then
-	echo -e "${ERROR}[ERROR] ${NC}No se han encontrado cambios a subir."
+	echo -e "${WARNING}[AVISO] ${NC}No se han encontrado cambios a subir."
 	exit 3
 fi
 

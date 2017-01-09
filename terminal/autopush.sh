@@ -34,7 +34,6 @@ directorioActual=$(pwd)
 cd "$( dirname "${BASH_SOURCE[0]}" )"
 # Cogemos los datos del archivo .conf
 source user.conf
-
 # Si están activadas las actualizaciones automáticas
 if $search_ota
 then

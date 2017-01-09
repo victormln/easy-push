@@ -54,8 +54,6 @@ then
     exec ./autopush.sh
   fi
 fi
-# Pendiente de arreglar, al actualizar el script, dice que no hay ningún .git
-# seguramente capte que está en el directorio del script
 
 # Cambio al directorio que estaba el usuario (donde quiere hacer el push)
 cd $directorioActual

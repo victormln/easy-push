@@ -41,11 +41,10 @@ then
   then
     # Volvemos a poner la variable reiniciar a false
     reiniciar=false
-    # Cambio al directorio del script para poder ejecutar el autopush.sh
-    cd "$( dirname "${BASH_SOURCE[0]}" )"
-    #
     # Iniciamos de nuevo el script para ejecutar el script actualizado
-    exec ./autopush.sh
+    exec $( dirname "${BASH_SOURCE[0]}" )/graphic/autopush.sh
+    # Cambio al directorio que estaba el usuario (donde quiere hacer el push)
+    cd $directorioActual
   fi
 fi
 # Cambio al directorio que estaba el usuario (donde quiere hacer el push)

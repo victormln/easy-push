@@ -28,15 +28,9 @@ OK='\033[0;32m'
 WARNING='\033[1;33m'
 NC='\033[0m'
 
-# Inicio una variable de si se ha reiniciado el programa a false
-reiniciar=false
 # Guardo el directorio actual donde se hará el push,
 # para no perder la referencia
-# en el caso que el programa se haya actualizado
-if ! $reiniciar
-then
-  directorioActual=$(pwd)
-fi
+directorioActual=$(pwd)
 
 # Cambio al directorio del script para poder ejecutar el update.sh
 cd "$( dirname "${BASH_SOURCE[0]}" )"
@@ -65,9 +59,12 @@ then
   fi
 fi
 
+echo "Directori antes:"
+pwd
 # Cambio al directorio que estaba el usuario (donde quiere hacer el push)
 cd $directorioActual
-
+echo "Directorio despues"
+pwd
 # Comprobamos si existe un .git, si no existe, mostraremos un mensaje y saldremos
 if [ ! -e .git ]
 then

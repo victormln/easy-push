@@ -25,11 +25,11 @@
 reiniciar=false
 
 # Hago un cd al directorio anterior para situarme en la raiz del script
-cd ..
+# cd ..
 # Miramos si hay algo nuevo subido
-git remote update &> /dev/null
+git --git-dir=$( dirname "${BASH_SOURCE[0]}" )/../.git --work-tree=$( dirname "${BASH_SOURCE[0]}" )/../ remote update &> /dev/null
 # Guardamos la linea donde pone si está up-to-date o is behind
-ultimaVersion=$(git status -uno | head -2 | tail -1 | grep "is behind")
+ultimaVersion=$(git --git-dir=$( dirname "${BASH_SOURCE[0]}" )/../.git --work-tree=$( dirname "${BASH_SOURCE[0]}" )/../ status -uno | head -2 | tail -1 | grep "is behind")
 if [ $? -eq 0 ]
 then
   # Mostramos un mensaje para avisar de la nueva actualización

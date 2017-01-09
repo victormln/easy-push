@@ -28,43 +28,29 @@ OK='\033[0;32m'
 WARNING='\033[1;33m'
 NC='\033[0m'
 
-# Guardo el directorio actual donde se hará el push,
-# para no perder la referencia
-directorioActual=$(pwd)
-
-# Cambio al directorio del script para poder ejecutar el update.sh
-cd "$( dirname "${BASH_SOURCE[0]}" )"
 # Cogemos los datos del archivo .conf
-source user.conf
+source $( dirname "${BASH_SOURCE[0]}" )/user.conf
 
 # Si están activadas las actualizaciones automáticas
 if $search_ota
 then
   # Cambio al directorio del script para poder ejecutar el update.sh
-  cd "$( dirname "${BASH_SOURCE[0]}" )"
+  # cd "$( dirname "${BASH_SOURCE[0]}" )"
   # Doy permiso al update.sh
-  chmod +x update.sh
+  chmod +x $( dirname "${BASH_SOURCE[0]}" )/update.sh
   # Comprobaré si hay alguna versión nueva del programa autopush
   # y lo mostraré en pantalla
-  source update.sh
+  source $( dirname "${BASH_SOURCE[0]}" )/update.sh
   # Si ha querido actualizar, reiniciaremos el script
   if $reiniciar
   then
     # Volvemos a poner la variable reiniciar a false
     reiniciar=false
-    # Cambio al directorio del script para poder ejecutar el autopush.sh
-    cd "$( dirname "${BASH_SOURCE[0]}" )"
     # Iniciamos de nuevo el script para ejecutar el script actualizado
-    exec ./autopush.sh
+    exec $( dirname "${BASH_SOURCE[0]}" )/autopush.sh
   fi
 fi
 
-echo "Directori antes:"
-pwd
-# Cambio al directorio que estaba el usuario (donde quiere hacer el push)
-cd $directorioActual
-echo "Directorio despues"
-pwd
 # Comprobamos si existe un .git, si no existe, mostraremos un mensaje y saldremos
 if [ ! -e .git ]
 then

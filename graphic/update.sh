@@ -21,6 +21,7 @@
 
 #  Descripción: Comprueba si el script está a la ultima version
 
+# Inicio una variable de si se ha reiniciado el programa a false
 reiniciar=false
 # Hago un cd al directorio anterior para situarme en la raiz del script
 cd ..

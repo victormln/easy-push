@@ -21,7 +21,6 @@
 
 #  Descripción: Comprueba si el script está a la ultima version
 
-reiniciar=false
 # Hago un cd al directorio anterior para situarme en la raiz del script
 cd ..
 # Miramos si hay algo nuevo subido

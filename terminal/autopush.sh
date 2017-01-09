@@ -27,9 +27,17 @@ ERROR='\033[0;31m'
 OK='\033[0;32m'
 WARNING='\033[1;33m'
 NC='\033[0m'
+
+# Inicio una variable de si se ha reiniciado el programa a false
+reiniciar=false
 # Guardo el directorio actual donde se hará el push,
 # para no perder la referencia
-directorioActual=$(pwd)
+# en el caso que el programa se haya actualizado
+if ! $reiniciar
+then
+  directorioActual=$(pwd)
+fi
+
 # Cambio al directorio del script para poder ejecutar el update.sh
 cd "$( dirname "${BASH_SOURCE[0]}" )"
 # Cogemos los datos del archivo .conf
@@ -38,6 +46,8 @@ source user.conf
 # Si están activadas las actualizaciones automáticas
 if $search_ota
 then
+  # Cambio al directorio del script para poder ejecutar el update.sh
+  cd "$( dirname "${BASH_SOURCE[0]}" )"
   # Doy permiso al update.sh
   chmod +x update.sh
   # Comprobaré si hay alguna versión nueva del programa autopush
@@ -50,7 +60,6 @@ then
     reiniciar=false
     # Cambio al directorio del script para poder ejecutar el autopush.sh
     cd "$( dirname "${BASH_SOURCE[0]}" )"
-    # 
     # Iniciamos de nuevo el script para ejecutar el script actualizado
     exec ./autopush.sh
   fi

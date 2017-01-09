@@ -49,7 +49,7 @@ then
     # Volvemos a poner la variable reiniciar a false
     reiniciar=false
     # Cambio al directorio del script para poder ejecutar el autopush.sh
-    cd "$( dirname "${BASH_SOURCE[0]}" )/autopush/graphic"
+    cd "$( dirname "${BASH_SOURCE[0]}" )"
     # Iniciamos de nuevo el script para ejecutar el script actualizado
     exec ./autopush.sh
   fi

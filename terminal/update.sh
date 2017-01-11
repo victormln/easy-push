@@ -23,7 +23,7 @@
 
 tieneUltimaVersion=false
 # Conseguimos la ultima version que hay en github y le quitamos los puntos
-ultimaVersion=$(curl -H 'Cache-Control: no-cache' -s https://raw.githubusercontent.com/victormln/easy-push/master/terminal/user.conf | tail -1 | cut -d'=' -f 2 | tr -d ".") &> /dev/null
+ultimaVersion=$(curl -L -s https://raw.githubusercontent.com/victormln/easy-push/master/terminal/user.conf | tail -1 | cut -d'=' -f 2 | tr -d ".") > /dev/null
 # Miramos que versión tiene el usuario actualmente
 versionActual=$(cat $( dirname "${BASH_SOURCE[0]}" )/user.conf | tail -1 | cut -d'=' -f 2 | tr -d ".")
 echo $ultimaVersion

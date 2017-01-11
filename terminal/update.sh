@@ -22,8 +22,10 @@
 #  Descripción: Comprueba si el script está a la ultima version
 
 tieneUltimaVersion=false
-ultimaVersion=$(curl -s https://raw.githubusercontent.com/victormln/easy-push/master/terminal/user.conf | tail -1 | cut -d'=' -f 2) &> /dev/null
-versionActual=$(cat $( dirname "${BASH_SOURCE[0]}" )/user.conf | tail -1 | cut -d'=' -f 2)
+# Conseguimos la ultima version que hay en github y le quitamos los puntos
+ultimaVersion=$(curl -s https://raw.githubusercontent.com/victormln/easy-push/master/terminal/user.conf | tail -1 | cut -d'=' -f 2 | tr -d ".") &> /dev/null
+# Miramos que versión tiene el usuario actualmente
+versionActual=$(cat $( dirname "${BASH_SOURCE[0]}" )/user.conf | tail -1 | cut -d'=' -f 2 | tr -d ".")
 echo $ultimaVersion
 echo $versionActual
 if [ $(echo "$ultimaVersion>=$versionActual" | bc) == "1" ]

@@ -1,0 +1,23 @@
+#############
+# Changelog #
+#############
+
+* Version: 2.1.0 *
+#----------------#
+
+- Añadidas lineas que muestran la versión del script y el autor al iniciar el script
+- Optimizada forma en la que se compara si la versión que se tiene está actualizada
+- Añadida opción para que actualize automáticamente a la última versión disponible
+- Añadido changelog para ir mostrando las mejoras de las distintas versiones
+
+* Version: 2.0.0 *
+#----------------#
+
+- Añadido archivo de configuración user.conf donde el usuario podrá configurar varias configuraciones del script
+- Se puede pasar por parámetros el commit que quieres hacer (se pueden poner comillas o no en el mensaje)
+- Busca si el script está actualizado y si no es así, da la opción de actualizarlo
+- Ahora se puede hacer un push a una rama (antes solo a master)
+- Ahora se muestran códigos de colores mostrando en todo momento lo que ha ido bien y lo que ha ido mal
+- Se han añadido mensajes de información en todo momento para que no parezca que el script está parado
+- Se da la opción de que salga un mensaje emergente cuando acabe de subir los cambios (por defecto desactivado)
+- Optimización de código y solucionados varios bugs

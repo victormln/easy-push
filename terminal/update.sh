@@ -35,7 +35,7 @@ echo $version
 if [ $(echo "$versionActualSinPuntos>=$ultimaVersionSinPuntos" | bc) == "1" ]
 then
 	tieneUltimaVersion=true
-	echo "Tiene la ultima version disponible"
+	echo "Tiene la ultima versión disponible ($version)"
 else
 	# Mostramos un mensaje para avisar de la nueva actualización
 	echo -e "${WARNING}¡NUEVA ACTUALIZACIÓN!${NC}"

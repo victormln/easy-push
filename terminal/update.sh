@@ -24,6 +24,8 @@
 tieneUltimaVersion=false
 ultimaVersion=$(curl -s https://raw.githubusercontent.com/victormln/easy-push/master/terminal/user.conf | tail -1 | cut -d'=' -f 2) &> /dev/null
 versionActual=$(cat $( dirname "${BASH_SOURCE[0]}" )/user.conf | tail -1 | cut -d'=' -f 2)
+echo $ultimaVersion
+echo $versionActual
 if (( $(echo "$ultimaVersion == $versionActual" | bc -l) ))
 then
 	tieneUltimaVersion=true
@@ -44,6 +46,6 @@ else
     echo -e "${OK}[OK] ${NC}La actualización ha acabado, por favor, vuelva a iniciar el script.";
   else
     # En el caso que seleccione que no, muestro un mensaje.
-    echo "${WARNING}¡AVISO!${NC} NO se actualizará (aunque se recomienda)."
+    echo -e "${WARNING}¡AVISO!${NC} NO se actualizará (aunque se recomienda)."
   fi
 fi

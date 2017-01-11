@@ -21,17 +21,17 @@
 
 #  Descripción: Comprueba si el script está a la ultima version
 
-reiniciar=false
-# Hago un cd al directorio anterior para situarme en la raiz del script
-cd ..
-# Miramos si hay algo nuevo subido
-git remote update &> /dev/null
-# Guardamos la linea donde pone si está up-to-date o is behind
-ultimaVersion=$(git status -uno | head -2 | tail -1 | grep "is behind")
-if [ $? -eq 0 ]
+tieneUltimaVersion=false
+ultimaVersion=$(curl -s https://raw.githubusercontent.com/victormln/easy-push/master/terminal/user.conf | tail -1 | cut -d'=' -f 2) &> /dev/null
+versionActual=$(cat $( dirname "${BASH_SOURCE[0]}" )/user.conf | tail -1 | cut -d'=' -f 2)
+if (( $(echo "$ultimaVersion == $versionActual" | bc -l) ))
 then
-  # Mostramos un mensaje para avisar de la nueva actualización
+	tieneUltimaVersion=true
+else
+	# Mostramos un mensaje para avisar de la nueva actualización
+	echo "##################################################"
 	echo -e "${WARNING}¡NUEVA ACTUALIZACIÓN!${NC}"
+	echo "##################################################"
   echo "Hay una nueva versión de este script y se recomienda actualizar."
   echo "Quieres descargarla y así tener las últimas mejoras? y/n o s/n"
   # Preguntamos si quiere actualizar
@@ -41,9 +41,8 @@ then
     # Si es así, hacemos un pull y le actualizamos el script
   	git pull | tee >(echo "Actualizando... Por favor, espere ...")
     echo -e "${OK}[OK] ${NC}La actualización ha acabado, por favor, vuelva a iniciar el script.";
-		reiniciar=true
   else
     # En el caso que seleccione que no, muestro un mensaje.
-    echo "¡AVISO! NO se actualizará (aunque se recomienda)."
+    echo "${WARNING}¡AVISO!${NC} NO se actualizará (aunque se recomienda)."
   fi
 fi

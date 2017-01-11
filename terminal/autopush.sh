@@ -38,7 +38,6 @@ then
   # Comprobaré si hay alguna versión nueva del programa autopush
   # y lo mostraré en pantalla
   source $( dirname "${BASH_SOURCE[0]}" )/update.sh
-
   # Si no tiene la ultima version y ha actualizado, volvemos a ejecutar el script
   if ! $tieneUltimaVersion
   then

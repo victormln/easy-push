@@ -30,11 +30,8 @@ NC='\033[0m'
 # Guardo el directorio actual donde se hará el push,
 # para no perder la referencia
 currentDirectory=pwd
-#
-echo "1"
 if ! [ pwd == $( dirname "${BASH_SOURCE[0]}" ) ]
 then
-  echo "dentro"
   directorioActual=$(pwd)
 fi
 

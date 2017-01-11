@@ -26,7 +26,7 @@ ultimaVersion=$(curl -s https://raw.githubusercontent.com/victormln/easy-push/ma
 versionActual=$(cat $( dirname "${BASH_SOURCE[0]}" )/user.conf | tail -1 | cut -d'=' -f 2)
 echo $ultimaVersion
 echo $versionActual
-if (( $(echo "$ultimaVersion == $versionActual" | bc -l) ))
+if [ $(echo "$ultimaVersion==$versionActual" | bc) == "1" ]
 then
 	tieneUltimaVersion=true
 	echo "Tiene la ultima version disponible"

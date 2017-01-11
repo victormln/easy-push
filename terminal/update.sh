@@ -29,7 +29,7 @@ ultimaVersionSinPuntos=$( echo $ultimaVersion | tr -d ".")
 versionActualSinPuntos=$(cat $( dirname "${BASH_SOURCE[0]}" )/user.conf | tail -1 | cut -d'=' -f 2 | tr -d ".")
 # Comprobamos si la versionActual es igual o mas grande que la ultimaVersion
 # es igual a la versionActual.
-if [ $(echo "$versionActualSinPuntos>=$ultimaVersionSinPuntos" | bc) == "1" ]
+if (( $versionActualSinPuntos>=$ultimaVersionSinPuntos ))
 then
 	tieneUltimaVersion=true
 else

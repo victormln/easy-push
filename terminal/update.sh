@@ -28,6 +28,9 @@ ultimaVersion=$(curl -s https://raw.githubusercontent.com/victormln/easy-push/ma
 versionActual=$(cat $( dirname "${BASH_SOURCE[0]}" )/user.conf | tail -1 | cut -d'=' -f 2 | tr -d ".")
 echo $ultimaVersion
 echo $versionActual
+# Comprobamos si la ultimaVersion que hay disponible
+# es menor o igual a la versionActual
+# así yo como desarrollador, puedo subir una versión más nuevas sin que interfiera
 if [ $(echo "$ultimaVersion<=$versionActual" | bc) == "1" ]
 then
 	tieneUltimaVersion=true

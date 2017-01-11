@@ -18,3 +18,4 @@ EN: I recommend to put the script into the file .bashrc for execute it wherever 
 alias gp="~/Downloads/easy-push/terminal/autopush.sh"
 alias gpg="~/Downloads/easy-push/graphic/autopush.sh"
 ```
+# Pending features

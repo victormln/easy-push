@@ -36,9 +36,10 @@ then
 else
 	if $automatic_update
 	then
-		$directorioActual=$(pwd)
+		directorioActual=$(pwd)
 		cd "$( dirname "${BASH_SOURCE[0]}" )"
 		cd ..
+		pwd
 		# Si es así, hacemos un pull y le actualizamos el script
 		git pull | tee >(echo "Actualizando... Por favor, espere ...")
 		cd $directorioActual
@@ -56,9 +57,14 @@ else
 	  read actualizar
 	  if [ $actualizar == "s" ] || [ $actualizar == "y" ]
 	  then
+			directorioActual=$(pwd)
+			cd "$( dirname "${BASH_SOURCE[0]}" )"
+			cd ..
+			pwd
 	    # Si es así, hacemos un pull y le actualizamos el script
 	  	git pull | tee >(echo "Actualizando... Por favor, espere ...")
-	    echo -e "${OK}[OK] ${NC}La actualización ha acabado, por favor, vuelva a iniciar el script.";
+			cd $directorioActual
+			echo -e "${OK}[OK] ${NC}La actualización ha acabado, por favor, vuelva a iniciar el script.";
 	  else
 	    # En el caso que seleccione que no, muestro un mensaje.
 	    echo -e "${WARNING}¡AVISO!${NC} NO se actualizará (aunque se recomienda)."

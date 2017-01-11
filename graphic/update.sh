@@ -37,12 +37,20 @@ else
 	zenity --question --title="¡Nueva actualización disponible!" --ok-label="Si" --cancel-label="No" --text="Hay una nueva versión de este script y se recomienda actualizar.\n\nQuieres descargarla y así tener las últimas mejoras?"
   if [ $? -eq 0 ]
   then
+		directorioActual=$(pwd)
+		# Nos colocamos en el directorio del script, para actualizarlo
+		cd "$( dirname "${BASH_SOURCE[0]}" )"
+		cd ..
     # Si es así, hacemos un pull y le actualizamos el script
-  	git pull | tee >(zenity --progress --title="Actualizando" --pulsate --no-cancel --auto-close --text="Actualizando ... Por favor espere.")
-    zenity --info --title="Actualización finalizada" --ok-label="Reiniciar" --text="La actualización ha acabado. Reinicie el script para continuar."
+  	git pull | tee >(zenity --progress --title="Nueva versión disponible" --pulsate --no-cancel --auto-close --text="Actualizando ... Por favor espere.")
+		# Cambiamos al directorio donde el usuario tiene sus cambios
+		cd $directorioActual
+		zenity --info --title="Actualización finalizada" --ok-label="Reiniciar" --text="La actualización ha acabado. Reinicie el script para continuar."
   else
     # En el caso que seleccione que no, muestro un mensaje.
     zenity --warning --title="No se actualizará" --text="No se va a actualizar (aunque se recomienda)."
-		tieneUltimaVersion=false
+		# Damos por su puesto que tiene la ultima version,
+		# para que el script no entre en bucle
+		tieneUltimaVersion=true
   fi
 fi

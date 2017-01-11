@@ -53,7 +53,7 @@ then
     # Volvemos a poner la variable reiniciar a false
     reiniciar=false
     # Iniciamos de nuevo el script para ejecutar el script actualizado
-    exec $( dirname "${BASH_SOURCE[0]}" )/terminal/autopush.sh
+    exec $( dirname "${BASH_SOURCE[0]}" )/autopush.sh
   fi
   # Cambio al directorio que estaba el usuario (donde quiere hacer el push)
   cd $directorioActual

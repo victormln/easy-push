@@ -34,24 +34,31 @@ then
 	tieneUltimaVersion=true
 	echo "Tiene la ultima versión disponible ($version)"
 else
-	# Mostramos un mensaje para avisar de la nueva actualización
-	echo "###########################################"
-	echo -e "${WARNING}¡NUEVA ACTUALIZACIÓN!${NC}"
-	echo "Tienes la versión: $version"
-	echo "Versión disponible: $ultimaVersion"
-	echo "###########################################"
-  echo "Hay una nueva versión de este script y se recomienda actualizar."
-  echo "Quieres descargarla y así tener las últimas mejoras? y/n o s/n"
-  # Preguntamos si quiere actualizar
-  read actualizar
-  if [ $actualizar == "s" ] || [ $actualizar == "y" ]
-  then
-    # Si es así, hacemos un pull y le actualizamos el script
-  	git pull | tee >(echo "Actualizando... Por favor, espere ...")
-    echo -e "${OK}[OK] ${NC}La actualización ha acabado, por favor, vuelva a iniciar el script.";
-  else
-    # En el caso que seleccione que no, muestro un mensaje.
-    echo -e "${WARNING}¡AVISO!${NC} NO se actualizará (aunque se recomienda)."
-		tieneUltimaVersion=true
-  fi
+	if $automatic_update
+	then
+		# Si es así, hacemos un pull y le actualizamos el script
+		git pull | tee >(echo "Actualizando... Por favor, espere ...")
+		echo -e "${OK}[OK] ${NC}La actualización ha acabado, por favor, vuelva a iniciar el script.";
+	else
+		# Mostramos un mensaje para avisar de la nueva actualización
+		echo "###########################################"
+		echo -e "${WARNING}¡NUEVA ACTUALIZACIÓN!${NC}"
+		echo "Tienes la versión: $version"
+		echo "Versión disponible: $ultimaVersion"
+		echo "###########################################"
+	  echo "Hay una nueva versión de este script y se recomienda actualizar."
+	  echo "Quieres descargarla y así tener las últimas mejoras? y/n o s/n"
+	  # Preguntamos si quiere actualizar
+	  read actualizar
+	  if [ $actualizar == "s" ] || [ $actualizar == "y" ]
+	  then
+	    # Si es así, hacemos un pull y le actualizamos el script
+	  	git pull | tee >(echo "Actualizando... Por favor, espere ...")
+	    echo -e "${OK}[OK] ${NC}La actualización ha acabado, por favor, vuelva a iniciar el script.";
+	  else
+	    # En el caso que seleccione que no, muestro un mensaje.
+	    echo -e "${WARNING}¡AVISO!${NC} NO se actualizará (aunque se recomienda)."
+			tieneUltimaVersion=true
+	  fi
+	fi
 fi

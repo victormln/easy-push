@@ -36,8 +36,12 @@ then
 else
 	if $automatic_update
 	then
+		$directorioActual=$(pwd)
+		cd "$( dirname "${BASH_SOURCE[0]}" )"
+		cd ..
 		# Si es así, hacemos un pull y le actualizamos el script
 		git pull | tee >(echo "Actualizando... Por favor, espere ...")
+		cd $directorioActual
 		echo -e "${OK}[OK] ${NC}La actualización ha acabado, por favor, vuelva a iniciar el script.";
 	else
 		# Mostramos un mensaje para avisar de la nueva actualización

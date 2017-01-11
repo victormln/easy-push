@@ -23,22 +23,24 @@
 
 tieneUltimaVersion=false
 # Conseguimos la ultima version que hay en github y le quitamos los puntos
-ultimaVersion=$(curl -L -s https://raw.githubusercontent.com/victormln/easy-push/master/terminal/user.conf | tail -1 | cut -d'=' -f 2 | tr -d ".") > /dev/null
+ultimaVersion=$(curl -L -s https://raw.githubusercontent.com/victormln/easy-push/master/terminal/user.conf | tail -1 | cut -d'=' -f 2) > /dev/null
+ultimaVersionSinPuntos=$( echo $ultimaVersion | tr -d ".")
 # Miramos que versión tiene el usuario actualmente
-versionActual=$(cat $( dirname "${BASH_SOURCE[0]}" )/user.conf | tail -1 | cut -d'=' -f 2 | tr -d ".")
+versionActualSinPuntos=$(cat $( dirname "${BASH_SOURCE[0]}" )/user.conf | tail -1 | cut -d'=' -f 2 | tr -d ".")
 echo $ultimaVersion
-echo $versionActual
+echo $ultimaVersionSinPuntos
+echo $version
 # Comprobamos si la versionActual es igual o mas grande que la ultimaVersion
 # es igual a la versionActual.
-if [ $(echo "$versionActual>=$ultimaVersion" | bc) == "1" ]
+if [ $(echo "$versionActualSinPuntos>=$ultimaVersionSinPuntos" | bc) == "1" ]
 then
 	tieneUltimaVersion=true
 	echo "Tiene la ultima version disponible"
 else
 	# Mostramos un mensaje para avisar de la nueva actualización
-	echo "##################################################"
 	echo -e "${WARNING}¡NUEVA ACTUALIZACIÓN!${NC}"
-	echo "##################################################"
+	echo "Tienes la versión: $version"
+	echo "Versión disponible: $ultimaVersion"
   echo "Hay una nueva versión de este script y se recomienda actualizar."
   echo "Quieres descargarla y así tener las últimas mejoras? y/n o s/n"
   # Preguntamos si quiere actualizar

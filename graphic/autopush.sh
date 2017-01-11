@@ -21,35 +21,23 @@
 
 #  Descripción: Subida de los cambios a un repositorio git (ejecutar el script donde se tenga el .git)
 
-# Guardo el directorio actual donde se hará el push,
-# para no perder la referencia
-directorioActual=$(pwd)
-# Cambio al directorio del script para poder ejecutar el update.sh
-cd "$( dirname "${BASH_SOURCE[0]}" )"
 # Cogemos los datos del archivo .conf
-source user.conf
+source $( dirname "${BASH_SOURCE[0]}" )/user.conf
 # Si están activadas las actualizaciones automáticas
 if $search_ota
 then
-  if [ $version -gt ]
   # Doy permiso al update.sh
-  chmod +x update.sh
+  chmod +x $( dirname "${BASH_SOURCE[0]}" )/update.sh
   # Comprobaré si hay alguna versión nueva del programa autopush
   # y lo mostraré en pantalla
-  source update.sh
-  # Si ha querido actualizar, reiniciaremos el script
-  if $reiniciar
+  source $( dirname "${BASH_SOURCE[0]}" )/update.sh
+  # Si no tiene la ultima version y ha actualizado, volvemos a ejecutar el script
+  if ! $tieneUltimaVersion
   then
-    # Volvemos a poner la variable reiniciar a false
-    reiniciar=false
     # Iniciamos de nuevo el script para ejecutar el script actualizado
-    exec $( dirname "${BASH_SOURCE[0]}" )/graphic/autopush.sh
-    # Cambio al directorio que estaba el usuario (donde quiere hacer el push)
-    cd $directorioActual
+    exec $( dirname "${BASH_SOURCE[0]}" )/autopush.sh
   fi
 fi
-# Cambio al directorio que estaba el usuario (donde quiere hacer el push)
-cd $directorioActual
 
 # Comprobamos si existe un .git, si no existe, mostraremos un mensaje y saldremos
 if [ ! -e .git ]

@@ -52,5 +52,6 @@ else
   else
     # En el caso que seleccione que no, muestro un mensaje.
     echo -e "${WARNING}¡AVISO!${NC} NO se actualizará (aunque se recomienda)."
+		tieneUltimaVersion=true
   fi
 fi

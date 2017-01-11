@@ -43,6 +43,6 @@ else
     echo -e "${OK}[OK] ${NC}La actualización ha acabado, por favor, vuelva a iniciar el script.";
   else
     # En el caso que seleccione que no, muestro un mensaje.
-    echo "¡AVISO! NO se actualizará (aunque se recomienda)."
+    echo "${WARNING}¡AVISO!${NC} NO se actualizará (aunque se recomienda)."
   fi
 fi

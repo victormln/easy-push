@@ -29,6 +29,7 @@ WARNING='\033[1;33m'
 NC='\033[0m'
 # Guardo el directorio actual donde se hará el push,
 # para no perder la referencia
+pwd
 directorioActual=$(pwd)
 # Cambio al directorio del script para poder ejecutar el update.sh
 cd "$( dirname "${BASH_SOURCE[0]}" )"
@@ -49,11 +50,10 @@ then
     reiniciar=false
     # Iniciamos de nuevo el script para ejecutar el script actualizado
     exec $( dirname "${BASH_SOURCE[0]}" )/terminal/autopush.sh
-    # Cambio al directorio que estaba el usuario (donde quiere hacer el push)
-    cd $directorioActual
   fi
+  # Cambio al directorio que estaba el usuario (donde quiere hacer el push)
+  cd $directorioActual
 fi
-
 # Comprobamos si existe un .git, si no existe, mostraremos un mensaje y saldremos
 if [ ! -e .git ]
 then

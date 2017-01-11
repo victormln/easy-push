@@ -25,12 +25,13 @@ tieneUltimaVersion=false
 ultimaVersion=$(curl -s https://raw.githubusercontent.com/victormln/easy-push/master/terminal/user.conf | tail -1 | cut -d'=' -f 2) &> /dev/null
 versionActual=$(cat $( dirname "${BASH_SOURCE[0]}" )/user.conf | tail -1 | cut -d'=' -f 2)
 if (( $(echo "$ultimaVersion == $versionActual" | bc -l) ))
-#if [ $versionActual -ne $ultimaVersion ]
 then
 	tieneUltimaVersion=true
 else
 	# Mostramos un mensaje para avisar de la nueva actualización
+	echo "##################################################"
 	echo -e "${WARNING}¡NUEVA ACTUALIZACIÓN!${NC}"
+	echo "##################################################"
   echo "Hay una nueva versión de este script y se recomienda actualizar."
   echo "Quieres descargarla y así tener las últimas mejoras? y/n o s/n"
   # Preguntamos si quiere actualizar

@@ -30,6 +30,7 @@ NC='\033[0m'
 # Guardo el directorio actual donde se hará el push,
 # para no perder la referencia
 pwd
+#
 directorioActual=$(pwd)
 # Cambio al directorio del script para poder ejecutar el update.sh
 cd "$( dirname "${BASH_SOURCE[0]}" )"

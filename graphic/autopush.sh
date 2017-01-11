@@ -31,6 +31,7 @@ source user.conf
 # Si están activadas las actualizaciones automáticas
 if $search_ota
 then
+  if [ $version -gt ]
   # Doy permiso al update.sh
   chmod +x update.sh
   # Comprobaré si hay alguna versión nueva del programa autopush

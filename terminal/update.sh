@@ -32,7 +32,6 @@ versionActualSinPuntos=$(cat $( dirname "${BASH_SOURCE[0]}" )/user.conf | tail -
 if [ $(echo "$versionActualSinPuntos>=$ultimaVersionSinPuntos" | bc) == "1" ]
 then
 	tieneUltimaVersion=true
-	echo "Tiene la ultima versión disponible ($version)"
 else
 	directorioActual=$(pwd)
 	# Nos colocamos en el directorio del script, para actualizarlo

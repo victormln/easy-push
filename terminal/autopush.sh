@@ -30,6 +30,9 @@ NC='\033[0m'
 
 # Cogemos los datos del archivo .conf
 source $( dirname "${BASH_SOURCE[0]}" )/user.conf
+
+echo "Easy Push v$version"
+if $show_author; then echo "Autor: Víctor Molina [victormln.com] <contact@victormln.com> "; fi;
 # Si están activadas las actualizaciones automáticas
 if $search_ota
 then

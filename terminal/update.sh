@@ -27,6 +27,7 @@ versionActual=$(cat $( dirname "${BASH_SOURCE[0]}" )/user.conf | tail -1 | cut -
 if (( $(echo "$ultimaVersion == $versionActual" | bc -l) ))
 then
 	tieneUltimaVersion=true
+	echo "Tiene la ultima version disponible"
 else
 	# Mostramos un mensaje para avisar de la nueva actualización
 	echo "##################################################"

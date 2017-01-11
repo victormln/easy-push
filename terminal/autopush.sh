@@ -29,9 +29,15 @@ WARNING='\033[1;33m'
 NC='\033[0m'
 # Guardo el directorio actual donde se hará el push,
 # para no perder la referencia
-pwd
+currentDirectory=pwd
 #
-directorioActual=$(pwd)
+echo "1"
+if ! [ pwd == $( dirname "${BASH_SOURCE[0]}" ) ]
+then
+  echo "dentro"
+  directorioActual=$(pwd)
+fi
+
 # Cambio al directorio del script para poder ejecutar el update.sh
 cd "$( dirname "${BASH_SOURCE[0]}" )"
 # Cogemos los datos del archivo .conf

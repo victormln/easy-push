@@ -2,6 +2,11 @@
 # Changelog #
 #############
 
+* Version: 2.1.1 *
+#----------------#
+
+- Solucionado bug con el actualizador
+
 * Version: 2.1.0 *
 #----------------#
 

@@ -60,7 +60,6 @@ else
 			directorioActual=$(pwd)
 			cd "$( dirname "${BASH_SOURCE[0]}" )"
 			cd ..
-			pwd
 	    # Si es así, hacemos un pull y le actualizamos el script
 	  	git pull | tee >(echo "Actualizando... Por favor, espere ...")
 			cd $directorioActual

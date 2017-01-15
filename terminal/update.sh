@@ -82,6 +82,8 @@ then
     			cd ..
     	    # Si es así, hacemos un pull y le actualizamos el script
     	  	git pull | tee >(echo "Actualizando... Por favor, espere ...")
+          # Iniciamos de nuevo el script para ejecutar el script actualizado
+          exec $( dirname "${BASH_SOURCE[0]}" )/autopush.sh
     			cd $directorioActual
     			echo -e "${OK}[OK] ${NC}La actualización ha acabado, por favor, vuelva a iniciar el script.";
     	  else
@@ -94,12 +96,6 @@ then
     	fi
     	# Cambiamos al directorio donde el usuario tiene sus cambios
     	cd $directorioActual
-    fi
-    # Si no tiene la ultima version y ha actualizado, volvemos a ejecutar el script
-    if ! $tieneUltimaVersion
-    then
-      # Iniciamos de nuevo el script para ejecutar el script actualizado
-      exec $( dirname "${BASH_SOURCE[0]}" )/autopush.sh
     fi
   fi
 else

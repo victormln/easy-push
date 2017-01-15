@@ -6,6 +6,8 @@
 #----------------#
 
 - Solucionado bug con el actualizador
+- Comprueba conexión a internet
+- Optimizado archivo update.sh
 
 * Version: 2.1.0 *
 #----------------#

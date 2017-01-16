@@ -96,8 +96,13 @@ git commit -m "$commit"
 # Guardamos el nombre de la branch actual, para luego hacer un push
 # con ese nombre
 branch=$(git rev-parse --abbrev-ref HEAD)
-# Hacemos un push a origin
-git push -u origin $branch
+if [ $has_internet -eq 0 ]
+then
+	# Hacemos un push a origin
+	git push -u origin $branch
+else
+	echo -e "${WARNING}[AVISO] ${NC}No tienes internet. Para buscar actualizaciones se necesita internet."
+fi
 
 # Mostramos un mensaje conforme ha ido todo bien
 # (aquí podria comprobar con un status si es cierto)

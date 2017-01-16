@@ -101,7 +101,8 @@ then
 	# Hacemos un push a origin
 	git push -u origin $branch
 else
-	echo -e "${WARNING}[AVISO] ${NC}No tienes internet. Para buscar actualizaciones se necesita internet."
+	echo -e "${WARNING}[AVISO] ${NC}No tienes internet. Para subir los cambios se necesita internet."
+	exit
 fi
 
 # Mostramos un mensaje conforme ha ido todo bien

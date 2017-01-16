@@ -2,13 +2,20 @@
 # Changelog #
 #############
 
+* Version: 2.1.2 *
+#----------------#
+
+- Solucionados varios bugs
+- Comprueba conexión a internet
+- Optimizado archivo update.sh
+- El commit por defecto que pone el usuario (en el caso que lo ponga), ahora se puede editar al ejecutar el script
+
 * Version: 2.1.1 *
 #----------------#
 
 - Solucionado bug con el actualizador
 - Comprueba conexión a internet
 - Optimizado archivo update.sh
-- El commit por defecto que pone el usuario, ahora se puede editar al ejecutar el script
 
 * Version: 2.1.0 *
 #----------------#

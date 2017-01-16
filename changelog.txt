@@ -8,13 +8,14 @@
 - Solucionado bug con el actualizador
 - Comprueba conexión a internet
 - Optimizado archivo update.sh
+- El commit por defecto que pone el usuario, ahora se puede editar al ejecutar el script
 
 * Version: 2.1.0 *
 #----------------#
 
-- Añadidas lineas que muestran la versión del script y el autor al iniciar el script
+- Añadidas líneas que muestran la versión del script y el autor al iniciar el script
 - Optimizada forma en la que se compara si la versión que se tiene está actualizada
-- Añadida opción para que actualize automáticamente a la última versión disponible
+- Añadida opción para que actualice automáticamente a la última versión disponible
 - Añadido changelog para ir mostrando las mejoras de las distintas versiones
 
 * Version: 2.0.0 *

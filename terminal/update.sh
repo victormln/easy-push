@@ -84,6 +84,7 @@ then
           exec $( dirname "${BASH_SOURCE[0]}" )/autopush.sh
     			cd $directorioActual
     			echo -e "${OK}[OK] ${NC}La actualización ha acabado, por favor, vuelva a iniciar el script.";
+          exit
     	  else
     	    # En el caso que seleccione que no, muestro un mensaje.
     	    echo -e "${WARNING}¡AVISO!${NC} NO se actualizará (aunque se recomienda)."

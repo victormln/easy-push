@@ -45,6 +45,12 @@ if $show_author; then echo "$AUTHORMESSAGE: Víctor Molina [victormln.com] <cont
 # Si están activadas las actualizaciones automáticas
 # Doy permiso al update.sh
 chmod +x $( dirname "${BASH_SOURCE[0]}" )/update.sh
+
+if [ "$1" == "--update" ]
+then
+	echo -e "$SEARCHINGUPDATESMSG"
+fi
+
 # Comprobaré si hay alguna versión nueva del programa autopush
 # y lo mostraré en pantalla
 source $( dirname "${BASH_SOURCE[0]}" )/update.sh

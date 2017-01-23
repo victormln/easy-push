@@ -4,6 +4,7 @@
 AUTHORMESSAGE="Autor"
 NOCHANGESMSG="${WARNING}[AVISO] ${NC}No se han encontrado cambios a subir."
 ADDINGFILESMSG="Añadiendo archivos al commit ..."
+SEARCHINGUPDATESMSG="Buscando actualizaciones..."
 ###############
 # DONE MESSAGES
 #######################################
@@ -35,6 +36,7 @@ UPDATINGPLEASEWAITMESSAGE="Actualizando... Por favor, espere ..."
 AVAILABLEUPDATEMESSAGE="Hay una nueva versión disponible."
 WANTTODOWNLOADMESSAGE="Quieres descargarla y así tener las últimas mejoras? y/n o s/n"
 FORCEUPDATE="Buscando actualizaciones disponibles..."
+HAVELASTVERSION="${OK}[OK]${NC} No hay actualizaciones nuevas. Tienes la última versión $version"
 ################
 # HELP MESSAGES
 #######################################

@@ -44,8 +44,7 @@ then
     then
       tieneUltimaVersion=false
       # Conseguimos la ultima version que hay en github y le quitamos los puntos
-      ultimaVersion=$(curl -s https://raw.githubusercontent.com/victormln/easy-push/master/terminal/autopush.sh) > /dev/null
-      ultimaVersion=$(echo $ultimaVersion | grep '# Versión:' $0 | cut -d: -f 2 | head -1)
+      ultimaVersion=$(curl -s https://raw.githubusercontent.com/victormln/easy-push/master/terminal/autopush.sh | grep '# Versión:' | cut -d: -f 2 | head -1) > /dev/null
       ultimaVersion=${ultimaVersion//[[:blank:]]/}
       ultimaVersionSinPuntos=$( echo $ultimaVersion | tr -d ".")
       # Miramos que versión tiene el usuario actualmente

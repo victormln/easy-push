@@ -44,7 +44,8 @@ then
     then
       tieneUltimaVersion=false
       # Conseguimos la ultima version que hay en github y le quitamos los puntos
-      ultimaVersion=$(curl -s https://raw.githubusercontent.com/victormln/easy-push/master/terminal/user.conf | tail -1 | cut -d'=' -f 2) > /dev/null
+      ultimaVersion=$(curl -s https://raw.githubusercontent.com/victormln/easy-push/master/terminal/autopush.sh | grep '# Versión:' $0 | cut -d: -f 2 | head -1) > /dev/null
+      ultimaVersion=${CURRENTVERSION//[[:blank:]]/}
       ultimaVersionSinPuntos=$( echo $ultimaVersion | tr -d ".")
       # Miramos que versión tiene el usuario actualmente
       versionActualSinPuntos=$(echo $CURRENTVERSION | tr -d ".")
@@ -65,7 +66,7 @@ then
         # Mostramos el mensaje de que hay una nueva actualización
   			echo "###########################################"
   			echo -e "$NEWUPDATEMESSAGE${NC}"
-  			echo "$YOUHAVEVERSIONMESSAGE: $version"
+  			echo "$YOUHAVEVERSIONMESSAGE: $CURRENTVERSION"
   			echo "$AVAILABLEVERSIONMESSAGE: $ultimaVersion"
   			echo "###########################################"
       	# Si tiene las actualizaciones automaticas, no se le pide nada

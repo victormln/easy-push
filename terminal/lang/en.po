@@ -1,0 +1,37 @@
+###############
+# INFO MESSAGES
+#######################################
+AUTHORMESSAGE="Author"
+
+###############
+# DONE MESSAGES
+#######################################
+
+###############
+# ASK MESSAGES
+#######################################
+
+#################
+# ERROR MESSAGES
+#######################################
+
+################
+# OTHER MESSAGES
+#######################################
+OPTIONSCONFIRM="Type: [y / n] or [s / n] to continue"
+###################
+# UPDATE MESSAGES
+#######################################
+NEWUPDATEMESSAGE="${WARNING}¡NEW UPDATE!"
+YOUHAVEVERSIONMESSAGE="You have the version"
+AVAILABLEVERSIONMESSAGE="Available version"
+NOTHAVEINTERNETMESSAGE="${WARNING}[WARNING] ${NC}You don't have internet. Is needed to check for updates"
+NOTUPDATEDMESSAGE="${WARNING}WARNING!${NC} It will NOT be updated (although recommended)."
+UPDATEDONEMESSAGE="${OK}[OK] ${NC}The update is finish, please re-start the script.";
+UPDATINGPLEASEWAITMESSAGE="Updating... Please, wait ..."
+AVAILABLEUPDATEMESSAGE="There is a new version available."
+WANTTODOWNLOADMESSAGE="Do you want to download it and have the latest improvements? y/n or s/n"
+FORCEUPDATE="Looking for updates..."
+################
+# HELP MESSAGES
+#######################################

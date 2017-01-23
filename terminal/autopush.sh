@@ -28,18 +28,20 @@ OK='\033[0;32m'
 WARNING='\033[1;33m'
 NC='\033[0m'
 # Get the current version
-CURRENTVERSION=$(grep '# Versión:' $( dirname "${BASH_SOURCE[0]}" )/autopush.sh | cut -d: -f 2 | head -1)
+CURRENTVERSION=$(grep '# Versión:' $0 | cut -d: -f 2 | head -1)
 CURRENTVERSION=${CURRENTVERSION//[[:blank:]]/}
+# Cogemos los datos del archivo .conf
+source $( dirname "${BASH_SOURCE[0]}" )/user.conf
+# Cogemos las variables de idioma
+source $( dirname "${BASH_SOURCE[0]}" )/lang/${LANGUAGE}.po
 
 ###########
 # Body script
 ####################
-# Cogemos los datos del archivo .conf
-source $( dirname "${BASH_SOURCE[0]}" )/user.conf
 
 echo "Easy Push v$CURRENTVERSION"
 
-if $show_author; then echo "Autor: Víctor Molina [victormln.com] <contact@victormln.com> "; fi;
+if $show_author; then echo "$AUTHORMESSAGE: Víctor Molina [victormln.com] <contact@victormln.com> "; fi;
 # Si están activadas las actualizaciones automáticas
 # Doy permiso al update.sh
 chmod +x $( dirname "${BASH_SOURCE[0]}" )/update.sh

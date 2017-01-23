@@ -1,8 +1,8 @@
 #!/bin/bash
-# Fitxer: autopush.sh
+# Fichero: autopush.sh
 # Autor: Víctor Molina Ferreira (victor)
-# Data: 16/03/16
-# Versión: 1.0
+# Fecha: 16/03/16
+# Versión: 2.1.2
 
 #  This program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -27,11 +27,18 @@ ERROR='\033[0;31m'
 OK='\033[0;32m'
 WARNING='\033[1;33m'
 NC='\033[0m'
+# Get the current version
+CURRENTVERSION=$(grep '# Versión:' $( dirname "${BASH_SOURCE[0]}" )/autopush.sh | cut -d: -f 2 | head -1)
+CURRENTVERSION=${CURRENTVERSION//[[:blank:]]/}
 
+###########
+# Body script
+####################
 # Cogemos los datos del archivo .conf
 source $( dirname "${BASH_SOURCE[0]}" )/user.conf
 
-echo "Easy Push v$version"
+echo "Easy Push v$CURRENTVERSION"
+
 if $show_author; then echo "Autor: Víctor Molina [victormln.com] <contact@victormln.com> "; fi;
 # Si están activadas las actualizaciones automáticas
 # Doy permiso al update.sh

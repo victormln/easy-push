@@ -21,6 +21,10 @@
 
 #  Descripción: Comprueba si el script está a la ultima version
 
+# Última comprobación de una actualización
+# (Puede forzar la búsqueda de una actualización con --update)
+lastChecked=2017-01-24
+
 # Compruebo que sistema está usando para hacer ping
 # Si es Linux o Mac
 if [ "$(uname -s)" == "Linux" ] || [ "$(uname)" == "Darwin" ]; then
@@ -42,6 +46,7 @@ then
   then
     if $search_ota || [ "$1" == "--update" ]
     then
+      sed -i 's,^\(lastChecked=\).*,\1'$(date +%Y-%m-%d)',' $( dirname "${BASH_SOURCE[0]}" )/update.sh
       tieneUltimaVersion=false
       # Conseguimos la ultima version que hay en github y le quitamos los puntos
       ultimaVersion=$(curl -s https://raw.githubusercontent.com/victormln/easy-push/master/terminal/autopush.sh | grep '# Versión:' | cut -d: -f 2 | head -1) > /dev/null

@@ -2,7 +2,7 @@
 # Fichero: autopush.sh
 # Autor: Víctor Molina Ferreira (victor)
 # Fecha: 16/03/16
-# Versión: 2.1.3
+# Versión: 2.1.4
 
 #  This program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by

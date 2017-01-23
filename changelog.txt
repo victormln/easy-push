@@ -2,6 +2,13 @@
 # Changelog #
 #############
 
+* Version: 2.1.3 *
+#----------------#
+
+- Añadido soporte multilenguaje (de momento inglés y español)
+- Optimizado update (solo comprobará actualizaciones una vez al dia)
+- Al actualizar no se reinicia el script. Mejor que el usuario lo vuelva a ejecutar
+
 * Version: 2.1.2 *
 #----------------#
 

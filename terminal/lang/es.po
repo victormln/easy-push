@@ -1,62 +1,27 @@
 ###############
 # INFO MESSAGES
 #######################################
-SHOWALIASCREATED="Estos son los alias que tienes creados hasta ahora:"
-OPTIONSSCRIPT="Si quieres añadir, editar, eliminar o copiar algún alias, puedes ejecutar el script con los argumentos [add] [edit] [delete] o [copy]."
-ALIASSELECTED="Has seleccionado el alias"
-MESSAGEEMPTYLINES="Tienes lineas en blanco en ${FILE_WITH_ALIAS}"
-NOEMPTYLINES="${OK}[OK] ${NC}No hay lineas en blanco en tu archivo"
-NOEMPTYALIAS="${OK}[OK] ${NC}No hay alias vacios en tu archivo"
-MENUSELECTION="Has seleccionado"
-EXITSCRIPT="Saliendo del script"
-EXITSCRIPTWITHOPTIONS="Ha salido del programa porque no ha seleccionado una de las opciones [y] [s] [n]"
-ROUTEBACKUPMESSAGE="Puedes modificar la ruta donde se guarda la copia de seguridad en el user.conf que hay en este script."
-ROUTEALIASFILEMESSAGE="Puedes modificar esta ruta en el user.conf que hay en este script."
 AUTHORMESSAGE="Autor"
-FILENOTCONTAINALIAS="\n${WARNING}[WARNING] ${NC}El archivo ${FILE_WITH_ALIAS} no contiene alias."
-CANNOTUSEOPTIONS="No podrás usar las funciones de [edit], [delete] o [copy], solo podrás usar [add]."
-REMEMBERFILEALIAS="Recuerde poner correctamente en el archivo user.conf el archivo que contiene los alias."
-RESTOREHELPMESSAGE="Si cree que ha sido a causa de un problema del script, puede restaurar la copia de seguridad con --restore"
+NOCHANGESMSG="${WARNING}[AVISO] ${NC}No se han encontrado cambios a subir."
+ADDINGFILESMSG="Añadiendo archivos al commit ..."
 ###############
 # DONE MESSAGES
 #######################################
-ALIASCREATED="${OK}[OK]${NC} Alias creado"
-MODIFIEDDONE="${OK}[OK]${NC} Se ha modificado el alias correctamente"
-DELETEDONE="${OK}[OK]${NC} Se ha eliminado el alias correctamente"
-EMPTYLINESDELETED="${OK}[OK] ${NC}Se han eliminado todas las lineas en blanco"
-EMPTYALIASDELETED="${OK}[OK] ${NC}Se ha/n eliminado el/los alia/s vacio/s"
-COPIEDDONE="${OK}[OK]${NC} Ahora también podrás usar el alias"
-BACKUPDONE="${OK}[OK]${NC} Se ha restaurado correctamente la copia de seguridad."
-HAVELASTVERSION="${OK}[OK]${NC}No hay actualizaciones nuevas. Tienes la última versión $version"
+ALLFILESADDEDMSG="${OK}[OK] ${NC}Todos los archivos añadidos correctamente."
+UPLOADCHANGESDONEMSG="${OK}[OK] ${NC}Se han subido todos los cambios correctamente."
+CHANGESUPLOADEDMSG="Cambios subidos correctamente"
 ###############
 # ASK MESSAGES
 #######################################
-WARNNEWALIAS="${WARNING}Se va a crear un alias nuevo${NC}"
-INSERTNAMEOFALIAS="Introduce un nombre para el alias"
-INSERTCOMMAND="Introduce ahora el comando que querrás ejecutar con el alias"
-ASKCREATEANOTHERALIAS="Quieres crear otro alias?"
-SELECTALIAS="Seleccione el número o nombre del alias que quiere editar"
-NAMEALIASDELETE="Seleccione el número o nombre del alias que quiere eliminar"
-CONFIRMDELETE="Seguro que quiere eliminar el alias"
-DELETEEMPTYLINES="Quieres eliminarlas todas?"
-EMPTYALIAS="Tienes alias vacio/s en ${FILE_WITH_ALIAS}"
-DELETEEMPTYALIAS="Quieres eliminarlo/s?"
-SELECTCOPYALIAS="Seleccione el número o nombre del alias que quiere copiar"
+INPUTCOMMITMESSAGE="Introduce el mensaje del commit (P.e: Añadidas mejoras):"
 #################
 # ERROR MESSAGES
 #######################################
-ALIASEXISTS="${ERROR}[ERROR] ${NC}Ese alias ya existe y no pueden haber 2 iguales"
-CHOOSEANOTHERNAME="Introduce un nombre que no esté cogido (q para salir)"
-ERRORALIASEXISTS="\n${ERROR}[ERROR] ${NC}Ese alias ya existe y no pueden haber 2 iguales.\nPiensa otro nombre para tu alias. Recuerda: puedes editar un alias o eliminarlo con [-e] o [-d]"
-ALIASNOTEXISTS="${ERROR}[ERROR]${NC} No existe el alias"
-UNKNOWNPROBLEM="${ERROR}[ERROR]${NC}Ha ocurrido un problema. Vuelva a ejecutar el script"
-COPYERROR="${ERROR}[ERROR]${NC} Ha ocurrido un error y no se ha copiado correctamente."
-BACKUPNOTFOUND="${ERROR}[ERROR]${NC} Lo siento. No se ha encontrado ninguna copia de seguridad."
-ALIASFILENOTFOUND="No existe el archivo ${FILE_WITH_ALIAS}."
+NOGITMSG="${ERROR}[ERROR] ${NC}No hay ningún .git"
+NOINTERNETPUSHMSG="${WARNING}[AVISO] ${NC}No tienes internet. Para subir los cambios se necesita internet."
 ################
 # OTHER MESSAGES
 #######################################
-OPTIONSCONFIRM="Escribe: [y / n] o [s / n] para continuar"
 ###################
 # UPDATE MESSAGES
 #######################################

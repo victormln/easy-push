@@ -2,7 +2,7 @@
 # Fichero: autopush.sh
 # Autor: Víctor Molina Ferreira (victor)
 # Fecha: 16/03/16
-# Versión: 2.1.2
+# Versión: 2.1.3
 
 #  This program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -52,7 +52,7 @@ source $( dirname "${BASH_SOURCE[0]}" )/update.sh
 # Comprobamos si existe un .git, si no existe, mostraremos un mensaje y saldremos
 if [ ! -e .git ]
 then
-	echo -e "${ERROR}[ERROR] ${NC}No hay ningún .git"
+	echo -e "$NOGITMSG"
 	exit 2
 fi
 # Guardamos en una variable si hay cambios comprobando si hay 3 lineas
@@ -63,13 +63,13 @@ hayCambios=$(git status | wc -l)
 # significará que no hay nada para añadir o commitear
 if [ $hayCambios -eq 3 ]
 then
-	echo -e "${WARNING}[AVISO] ${NC}No se han encontrado cambios a subir."
+	echo -e "$NOCHANGESMSG"
 	exit 3
 fi
 
 # Añadimos todos los archivos para subir
-git add --all | tee >(echo "Añadiendo archivos al commit ...")
-echo -e "${OK}[OK] ${NC}Todos los archivos añadidos correctamente."
+git add --all | tee >(echo "$ADDINGFILESMSG")
+echo -e "$ALLFILESADDEDMSG"
 
 IFS=''
 if [ -z "$commit" ]
@@ -86,7 +86,7 @@ then
   else
     # Mostramos un mensaje interactivo donde introduciremos el mensaje
     # a hacer commit
-    echo "Introduce el mensaje del commit (P.e: Añadidas mejoras):"
+    echo "$INPUTCOMMITMESSAGE"
     read commit
     if [ $? -ne 0 ]
     then
@@ -110,7 +110,7 @@ then
 	# Hacemos un push a origin
 	git push -u origin $branch
 else
-	echo -e "${WARNING}[AVISO] ${NC}No tienes internet. Para subir los cambios se necesita internet."
+	echo -e "$NOINTERNETPUSHMSG"
 	exit
 fi
 
@@ -118,12 +118,12 @@ fi
 # (aquí podria comprobar con un status si es cierto)
 if [ $? -eq 0 ]
 then
-  echo -e "${OK}[OK] ${NC}Se han subido todos los cambios correctamente."
+  echo -e "$UPLOADCHANGESDONEMSG"
   # Si tiene activadas las notificaciones, mostraremos un mensaje de Ok
   if $popup_push
   then
     # Mostrabamos un mensaje si los cambios se habian subido bien
     # Añadimos una notificación si se han realizado las subidas al repositorio correctamente
-  	zenity --notification --window-icon="info" --text="Cambios subidos correctamente" &> /dev/null &
+  	zenity --notification --window-icon="info" --text="$CHANGESUPLOADEDMSG" &> /dev/null &
   fi
 fi

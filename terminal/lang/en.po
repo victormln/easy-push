@@ -2,23 +2,26 @@
 # INFO MESSAGES
 #######################################
 AUTHORMESSAGE="Author"
-
+NOCHANGESMSG="${WARNING}[NOTICE] ${NC}No changes found (up-to-date)."
+ADDINGFILESMSG="Adding files to commit ..."
 ###############
 # DONE MESSAGES
 #######################################
-
+ALLFILESADDEDMSG="${OK}[OK] ${NC}All files added correctly."
+UPLOADCHANGESDONEMSG="${OK}[OK] ${NC}All changes successfully uploaded."
+CHANGESUPLOADEDMSG="Changes uploaded correctly"
 ###############
 # ASK MESSAGES
 #######################################
-
+INPUTCOMMITMESSAGE="Enter the commit message (eg: Added improvements):"
 #################
 # ERROR MESSAGES
 #######################################
-
+NOGITMSG="${ERROR}[ERROR] ${NC}There is no .git"
+NOINTERNETPUSHMSG="${WARNING}[NOTICE] ${NC}You do not have internet. To upload changes you need internet connection."
 ################
 # OTHER MESSAGES
 #######################################
-OPTIONSCONFIRM="Type: [y / n] or [s / n] to continue"
 ###################
 # UPDATE MESSAGES
 #######################################

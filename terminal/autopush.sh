@@ -2,7 +2,7 @@
 # Fichero: autopush.sh
 # Autor: Víctor Molina Ferreira (victor)
 # Fecha: 16/03/16
-# Versión: 2.1.5
+# Versión: 2.1.6
 
 #  This program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -49,6 +49,11 @@ chmod +x $( dirname "${BASH_SOURCE[0]}" )/update.sh
 if [ "$1" == "--update" ]
 then
 	echo -e "$SEARCHINGUPDATESMSG"
+elif [ "$1" == "--conf" ]
+then
+	echo -e "$CONFIGURATIONMSG"
+  $default_editor $( dirname "${BASH_SOURCE[0]}" )/user.conf
+	exit 0
 fi
 
 # Comprobaré si hay alguna versión nueva del programa autopush
@@ -111,14 +116,8 @@ git commit -m "$commit"
 # Guardamos el nombre de la branch actual, para luego hacer un push
 # con ese nombre
 branch=$(git rev-parse --abbrev-ref HEAD)
-if [ $has_internet -eq 0 ]
-then
-	# Hacemos un push a origin
-	git push -u origin $branch
-else
-	echo -e "$NOINTERNETPUSHMSG"
-	exit
-fi
+# Hacemos un push a origin
+git push -u origin $branch
 
 # Mostramos un mensaje conforme ha ido todo bien
 # (aquí podria comprobar con un status si es cierto)

@@ -5,6 +5,7 @@ AUTHORMESSAGE="Autor"
 NOCHANGESMSG="${WARNING}[AVISO] ${NC}No se han encontrado cambios a subir."
 ADDINGFILESMSG="Añadiendo archivos al commit ..."
 SEARCHINGUPDATESMSG="Buscando actualizaciones..."
+CONFIGURATIONMSG="Abriendo archivo de configuración."
 ###############
 # DONE MESSAGES
 #######################################

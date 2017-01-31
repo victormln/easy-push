@@ -55,7 +55,6 @@ Todos los argumentos disponibles:
 |Argumento           |Abreviado|Significado                                   |Uso|
 | ------------- | ---- | ---------------------------------------- |----------|
 |`"Mensaje del commit"`       |     | Se pondrá este mensaje del commit        |`gp "Mensaje del commit"`  |
-|`--help`       |`-h`     | Muestra los comandos disponibles         |`gp --help`  |
 |`--conf`     |  | Abre/edita el archivo de configuración del script  |`gp --conf`      |
 |`--update`     |  | Busca actualizaciones disponibles.  |`gp --update`      |
 |     |`-v`  | Muestra la versión instalada del script.  |`gp -v`      |

@@ -30,6 +30,12 @@ NC='\033[0m'
 # Get the current version
 CURRENTVERSION=$(grep '# Versión:' $0 | cut -d: -f 2 | head -1)
 CURRENTVERSION=${CURRENTVERSION//[[:blank:]]/}
+
+if [ "$1" == "-v" ]
+then
+	echo $CURRENTVERSION
+	exit
+fi
 # Cogemos los datos del archivo .conf
 source $( dirname "${BASH_SOURCE[0]}" )/user.conf
 # Cogemos las variables de idioma

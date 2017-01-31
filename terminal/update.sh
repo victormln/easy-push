@@ -23,7 +23,7 @@
 
 # Última comprobación de una actualización
 # (Puede forzar la búsqueda de una actualización con --update)
-lastChecked=2017-01-24
+lastChecked=2017-01-31
 
 # Compruebo que sistema está usando para hacer ping
 # Si es Linux o Mac

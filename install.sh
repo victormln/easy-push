@@ -12,5 +12,5 @@ actualDir=$(pwd)
 echo "alias gp=\"$actualDir/terminal/autopush.sh\"" >> ~/.bashrc
 echo "alias gpg=\"$actualDir/graphic/autopush.sh\"" >> ~/.bashrc
 echo -e "${OK}[OK]${NC} Instalación finalizada."
-echo "Reinicie este terminal y ejecute ${BLUE}gp -v${NC} para comprobar que se ha instalado correctamente."
+echo -e "Reinicie este terminal y ejecute ${BLUE}gp -v${NC} para comprobar que se ha instalado correctamente."
 exit

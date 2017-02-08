@@ -79,6 +79,7 @@ then
       	then
           # Si es así, hacemos un pull y le actualizamos el script
   				echo $AVAILABLEVERSIONMESSAGE
+          git stash > /dev/null
   				git pull | tee >(echo "$UPDATINGPLEASEWAITMESSAGE")
   				echo -e "$UPDATEDONEMESSAGE"
       	else
@@ -91,6 +92,7 @@ then
       			directorioActual=$(pwd)
       			cd "$( dirname "${BASH_SOURCE[0]}" )"
       			cd ..
+            git stash > /dev/null
             # Si es así, hacemos un pull y le actualizamos el script
   			  	git pull | tee >(echo "$UPDATINGPLEASEWAITMESSAGE")
   					echo -e "$UPDATEDONEMESSAGE"

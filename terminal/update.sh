@@ -23,94 +23,98 @@
 
 # Última comprobación de una actualización
 # (Puede forzar la búsqueda de una actualización con --update)
-lastChecked=2017-02-06
-
-# Compruebo que sistema está usando para hacer ping
-# Si es Linux o Mac
-if [ "$(uname -s)" == "Linux" ] || [ "$(uname)" == "Darwin" ]; then
-    ping -c 1 www.google.com &> /dev/null
-    has_internet=$(echo $?)
-    # Si es Windows
-elif [ "$(expr substr $(uname -s) 1 10)" == "MINGW32_NT" ] ||
-  [ "$(expr substr $(uname -s) 1 10)" == "MINGW64_NT" ]; then
-    ping -n 1 www.google.com > /dev/null
-    has_internet=$(echo $?)
-fi
-
-today=$(date +%Y-%m-%d)
-if [[ "$today" > "$lastChecked" ]] || [ "$1" == "--update" ]
+lastChecked=2017-02-12
+if ! command -v curl >/dev/null 2>&1
 then
-  # Si el ping se ha realizado correctamente es que tiene internet
-  # por lo que se buscaran actualizaciones
-  if [ $has_internet -eq 0 ]
+  echo -e "$CURLNOTINSTALLED"
+else
+  # Compruebo que sistema está usando para hacer ping
+  # Si es Linux o Mac
+  if [ "$(uname -s)" == "Linux" ] || [ "$(uname)" == "Darwin" ]; then
+      ping -c 1 www.google.com &> /dev/null
+      has_internet=$(echo $?)
+      # Si es Windows
+  elif [ "$(expr substr $(uname -s) 1 10)" == "MINGW32_NT" ] ||
+    [ "$(expr substr $(uname -s) 1 10)" == "MINGW64_NT" ]; then
+      ping -n 1 www.google.com > /dev/null
+      has_internet=$(echo $?)
+  fi
+
+  today=$(date +%Y-%m-%d)
+  if [[ "$today" > "$lastChecked" ]] || [ "$1" == "--update" ]
   then
-    if $search_ota || [ "$1" == "--update" ]
+    # Si el ping se ha realizado correctamente es que tiene internet
+    # por lo que se buscaran actualizaciones
+    if [ $has_internet -eq 0 ]
     then
-      sed -i 's,^\(lastChecked=\).*,\1'$(date +%Y-%m-%d)',' $( dirname "${BASH_SOURCE[0]}" )/update.sh
-      tieneUltimaVersion=false
-      # Conseguimos la ultima version que hay en github y le quitamos los puntos
-      ultimaVersion=$(curl -s https://raw.githubusercontent.com/victormln/easy-push/master/terminal/autopush.sh | grep '# Versión:' | cut -d: -f 2 | head -1) > /dev/null
-      ultimaVersion=${ultimaVersion//[[:blank:]]/}
-      ultimaVersionSinPuntos=$( echo $ultimaVersion | tr -d ".")
-      # Miramos que versión tiene el usuario actualmente
-      versionActualSinPuntos=$(echo $CURRENTVERSION | tr -d ".")
-      # Comprobamos si la versionActual es igual o mas grande que la ultimaVersion
-      # es igual a la versionActual.
-      if (( $versionActualSinPuntos>=$ultimaVersionSinPuntos ))
+      if $search_ota || [ "$1" == "--update" ]
       then
-      	tieneUltimaVersion=true
-        if [ "$1" == "--update" ]
+        sed -i 's,^\(lastChecked=\).*,\1'$(date +%Y-%m-%d)',' $( dirname "${BASH_SOURCE[0]}" )/update.sh
+        tieneUltimaVersion=false
+        # Conseguimos la ultima version que hay en github y le quitamos los puntos
+        ultimaVersion=$(curl -s https://raw.githubusercontent.com/victormln/easy-push/master/terminal/autopush.sh | grep '# Versión:' | cut -d: -f 2 | head -1) > /dev/null
+        ultimaVersion=${ultimaVersion//[[:blank:]]/}
+        ultimaVersionSinPuntos=$( echo $ultimaVersion | tr -d ".")
+        # Miramos que versión tiene el usuario actualmente
+        versionActualSinPuntos=$(echo $CURRENTVERSION | tr -d ".")
+        # Comprobamos si la versionActual es igual o mas grande que la ultimaVersion
+        # es igual a la versionActual.
+        if (( $versionActualSinPuntos>=$ultimaVersionSinPuntos ))
         then
-          echo -e "$HAVELASTVERSION"
-        fi
-      else
-      	directorioActual=$(pwd)
-      	# Nos colocamos en el directorio del script, para actualizarlo
-      	cd "$( dirname "${BASH_SOURCE[0]}" )"
-      	cd ..
-        # Mostramos el mensaje de que hay una nueva actualización
-  			echo "###########################################"
-  			echo -e "$NEWUPDATEMESSAGE${NC}"
-  			echo "$YOUHAVEVERSIONMESSAGE: $CURRENTVERSION"
-  			echo "$AVAILABLEVERSIONMESSAGE: $ultimaVersion"
-  			echo "###########################################"
-      	# Si tiene las actualizaciones automaticas, no se le pide nada
-      	if $automatic_update
-      	then
-          # Si es así, hacemos un pull y le actualizamos el script
-  				echo $AVAILABLEVERSIONMESSAGE
-          git stash > /dev/null
-  				git pull | tee >(echo "$UPDATINGPLEASEWAITMESSAGE")
-  				echo -e "$UPDATEDONEMESSAGE"
-      	else
-          echo "$AVAILABLEUPDATEMESSAGE"
-  			  echo "$WANTTODOWNLOADMESSAGE"
-      	  # Preguntamos si quiere actualizar
-      	  read actualizar
-      	  if [ $actualizar == "s" ] || [ $actualizar == "y" ]
-      	  then
-      			directorioActual=$(pwd)
-      			cd "$( dirname "${BASH_SOURCE[0]}" )"
-      			cd ..
-            git stash > /dev/null
+        	tieneUltimaVersion=true
+          if [ "$1" == "--update" ]
+          then
+            echo -e "$HAVELASTVERSION"
+          fi
+        else
+        	directorioActual=$(pwd)
+        	# Nos colocamos en el directorio del script, para actualizarlo
+        	cd "$( dirname "${BASH_SOURCE[0]}" )"
+        	cd ..
+          # Mostramos el mensaje de que hay una nueva actualización
+    			echo "###########################################"
+    			echo -e "$NEWUPDATEMESSAGE${NC}"
+    			echo "$YOUHAVEVERSIONMESSAGE: $CURRENTVERSION"
+    			echo "$AVAILABLEVERSIONMESSAGE: $ultimaVersion"
+    			echo "###########################################"
+        	# Si tiene las actualizaciones automaticas, no se le pide nada
+        	if $automatic_update
+        	then
             # Si es así, hacemos un pull y le actualizamos el script
-  			  	git pull | tee >(echo "$UPDATINGPLEASEWAITMESSAGE")
-  					echo -e "$UPDATEDONEMESSAGE"
-            exit
-      	  else
-            # En el caso que seleccione que no, muestro un mensaje.
-  			    echo -e "$NOTUPDATEDMESSAGE"
-  					echo -e "**************************"
-  					# Damos por su puesto que tiene la ultima version,
-  					# para que el script no entre en bucle
-  					tieneUltimaVersion=true
-      	  fi
-      	fi
-      	# Cambiamos al directorio donde el usuario tiene sus cambios
-      	cd $directorioActual
+    				echo $AVAILABLEVERSIONMESSAGE
+            git stash > /dev/null
+    				git pull | tee >(echo "$UPDATINGPLEASEWAITMESSAGE")
+    				echo -e "$UPDATEDONEMESSAGE"
+        	else
+            echo "$AVAILABLEUPDATEMESSAGE"
+    			  echo "$WANTTODOWNLOADMESSAGE"
+        	  # Preguntamos si quiere actualizar
+        	  read actualizar
+        	  if [ $actualizar == "s" ] || [ $actualizar == "y" ]
+        	  then
+        			directorioActual=$(pwd)
+        			cd "$( dirname "${BASH_SOURCE[0]}" )"
+        			cd ..
+              git stash > /dev/null
+              # Si es así, hacemos un pull y le actualizamos el script
+    			  	git pull | tee >(echo "$UPDATINGPLEASEWAITMESSAGE")
+    					echo -e "$UPDATEDONEMESSAGE"
+              exit
+        	  else
+              # En el caso que seleccione que no, muestro un mensaje.
+    			    echo -e "$NOTUPDATEDMESSAGE"
+    					echo -e "**************************"
+    					# Damos por su puesto que tiene la ultima version,
+    					# para que el script no entre en bucle
+    					tieneUltimaVersion=true
+        	  fi
+        	fi
+        	# Cambiamos al directorio donde el usuario tiene sus cambios
+        	cd $directorioActual
+        fi
       fi
+    else
+      echo -e "$NOTHAVEINTERNETMESSAGE"
     fi
-  else
-    echo -e "$NOTHAVEINTERNETMESSAGE"
   fi
 fi

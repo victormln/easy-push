@@ -38,6 +38,7 @@ AVAILABLEUPDATEMESSAGE="Hay una nueva versión disponible."
 WANTTODOWNLOADMESSAGE="Quieres descargarla y así tener las últimas mejoras? y/n o s/n"
 FORCEUPDATE="Buscando actualizaciones disponibles..."
 HAVELASTVERSION="${OK}[OK]${NC} No hay actualizaciones nuevas. Tienes la última versión $version"
+CURLNOTINSTALLED="${WARNING}[AVISO]${NC} No tienes curl instalado, por lo que no se pueden buscar actualizaciones."
 ################
 # HELP MESSAGES
 #######################################

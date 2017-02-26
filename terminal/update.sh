@@ -21,9 +21,6 @@
 
 #  Descripción: Comprueba si el script está a la ultima version
 
-# Última comprobación de una actualización
-# (Puede forzar la búsqueda de una actualización con --update)
-lastChecked=2017-02-12
 if ! command -v curl >/dev/null 2>&1
 then
   echo -e "$CURLNOTINSTALLED"
